@@ -15,13 +15,13 @@ public class AuditorRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // --- 1. LLAMA AL PROCEDIMIENTO PRINCIPAL ---
+    //Llama al procedimiento principal
     public void ejecutarProcesoComisiones(String fecha, int limite) {
         String sql = "CALL SP_PROCESAR_COMISIONES_MES(?, ?)";
         jdbcTemplate.update(sql, fecha, limite);
     }
 
-    // --- 2. OBTIENE LOS RESULTADOS DEL DETALLE ---
+    //Obtiene los resultados del detalle
     public List<DetalleComisionesAuditoriasMes> obtenerDetalleComisiones() {
         String sql = "SELECT * FROM detalle_comisiones_auditorias_mes ORDER BY nombre_auditor";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
@@ -41,7 +41,7 @@ public class AuditorRepository {
         );
     }
 
-    // --- 3. OBTIENE LA BITÁCORA DE ERRORES ---
+    //Obtiene la bitácora de errores
     public List<ErrorProceso> obtenerBitacora() {
         String sql = "SELECT * FROM error_proceso ORDER BY correlativo DESC";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
@@ -53,13 +53,13 @@ public class AuditorRepository {
         );
     }
 
-    // --- 4. ACTUALIZA UN SUELDO (PARA PROBAR EL TRIGGER) ---
+    //Actualiza un sueldo (Trigger)
     public int actualizarSueldo(Long idAuditor, int nuevoSueldo) {
         String sql = "UPDATE auditor SET sueldo = ? WHERE id_auditor = ?";
         return jdbcTemplate.update(sql, nuevoSueldo, idAuditor);
     }
 
-    // --- 5. OBTIENE EL HISTORIAL DE CAMBIOS DE SUELDO ---
+    //Obtiene el historial de cambios de sueldo
     public List<HistorialSueldos> obtenerHistorialSueldos() {
         String sql = "SELECT * FROM historial_sueldos ORDER BY fecha_mod DESC";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
@@ -74,7 +74,7 @@ public class AuditorRepository {
         );
     }
     
-    // --- 6. OBTIENE TODOS LOS AUDITORES ---
+    //Obtiene todos los auditores
     public List<Auditor> obtenerTodosLosActivos() {
         String sql = "SELECT * FROM auditor ORDER BY appaterno";
         return jdbcTemplate.query(sql, (rs, rowNum) ->

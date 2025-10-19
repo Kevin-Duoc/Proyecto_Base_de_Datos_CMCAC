@@ -12,13 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173") // Ojo con el puerto de React (Vite)
 public class AuditorController {
 
     @Autowired
     private AuditorService auditorService;
 
-    // Endpoint para EJECUTAR el proceso de comisiones
+    //POST http://localhost:8080/api/comisiones/procesar
     @PostMapping("/comisiones/procesar")
     public ResponseEntity<String> ejecutarProceso(@RequestParam String fecha, @RequestParam int limite) {
         try {
@@ -29,25 +28,25 @@ public class AuditorController {
         }
     }
 
-    // Endpoint para VER los resultados del detalle
+    //GET http://localhost:8080/api/comisiones/detalle
     @GetMapping("/comisiones/detalle")
     public List<DetalleComisionesAuditoriasMes> getDetalleComisiones() {
         return auditorService.verDetalleComisiones();
     }
 
-    // Endpoint para VER la bitácora de errores/eventos
+    //GET http://localhost:8080/api/bitacora
     @GetMapping("/bitacora")
     public List<ErrorProceso> getBitacora() {
         return auditorService.verBitacora();
     }
     
-    // Endpoint para LISTAR todos los auditores
+    //GET http://localhost:8080/api/auditores
     @GetMapping("/auditores")
     public List<Auditor> getTodosLosAuditores() {
         return auditorService.listarTodosLosAuditores();
     }
 
-    // Endpoint para ACTUALIZAR el sueldo (y probar el TRIGGER)
+    // PUT http://localhost:8080/api/auditores/{id}/sueldo
     @PutMapping("/auditores/{id}/sueldo")
     public ResponseEntity<String> actualizarSueldo(@PathVariable Long id, @RequestParam int nuevoSueldo) {
         int filas = auditorService.cambiarSueldoAuditor(id, nuevoSueldo);
@@ -57,7 +56,7 @@ public class AuditorController {
         return ResponseEntity.status(404).body("Auditor no encontrado.");
     }
 
-    // Endpoint para VER el historial de cambios de sueldo
+    //GET http://localhost:8080/api/historial-sueldos
     @GetMapping("/historial-sueldos")
     public List<HistorialSueldos> getHistorialSueldos() {
         return auditorService.verHistorialSueldos();
