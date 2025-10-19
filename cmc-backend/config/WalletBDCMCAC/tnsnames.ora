@@ -1,0 +1,12 @@
+bdcmcac_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=ga1dbaf8828b599_bdcmcac_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+bdcmcac_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=ga1dbaf8828b599_bdcmcac_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+bdcmcac_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=ga1dbaf8828b599_bdcmcac_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+bdcmcac_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=ga1dbaf8828b599_bdcmcac_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+bdcmcac_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=ga1dbaf8828b599_bdcmcac_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+
